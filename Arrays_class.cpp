@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+//class of Array having length of array and size of array
 class Array{
 	private:
 		int *A;
@@ -17,27 +17,29 @@ class Array{
 		Array(int sz)
 		{
 			size=sz;
+			//creating array in heap
 			A=new int[size];
 			length=0;
 		}
-
+         //deallocation of array
 		~Array()
 		{
 			delete []A;
 		}
 
-		void Display();
-		void Insert(int index,int x);
-		int Delete(int index);
+		void Display();//declaring  display function
+		void Insert(int index,int x);//declaring insert function
+		int Delete(int index);//declaring delete function
 };
-
+//function for displaying Array 
 void Array :: Display(){
 	for(int i=0;i<length;i++){
-		cout<<A[i]<<" ";
+		cout<<A[i]<<" ";//printing a space
 	}
+	//printing a new line
 	cout<<endl;
 }
-
+// function for inserting a value in the given array at a given index
 void Array :: Insert(int index,int x){
 	if(index>=0 && index<=length){
 		for (int i = length; i >= index; i--)
@@ -46,7 +48,7 @@ void Array :: Insert(int index,int x){
 		length++;
 	}
 }
-
+//function for deleting an element of desired index
 int Array :: Delete(int index){
 	int x=0;
 	if(index>=0 && index<length){
