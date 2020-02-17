@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
+//T is the type of Data stored in the class
 template <class T>
-//generic class Array of any data type T
 class Array{
 	private:
 		T *A;
@@ -34,7 +34,7 @@ class Array{
 		T Delete(int index);
 };
 
-//generic Display function 
+//displaying all the elements of given array 
 template<class T>
 void Array <T> :: Display(){
 	for(int i=0;i<length;i++){
@@ -43,7 +43,7 @@ void Array <T> :: Display(){
 	cout<<endl;
 }
 
-//generic Insert function
+//inserting any data of data type T in the class 
 template <class T>
 void Array <T> :: Insert(int index,T x){
 	if(index>=0 && index<=length){
@@ -54,7 +54,7 @@ void Array <T> :: Insert(int index,T x){
 	}
 }
 
-//generic Delete function
+//removing the data from the class of array of data type T
 template <class T>
 T Array <T> :: Delete(int index){
 	T x=0;
