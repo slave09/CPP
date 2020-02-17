@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-//class of Array having length of array and size of array
+//implementation of array
 class Array{
 	private:
 		int *A;
