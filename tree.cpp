@@ -8,18 +8,22 @@ public:
     root = NULL;   
   }
   void createTree();
+	void preorder(){preorder(root);}
   void preorder(Node * holder);
+	void postorder(){postorder(root);}
   void Inorder(Node * holder);
+	void Inorder(){Inorder(root);}
   void postorder(Node * holder);
   int treeHeight(Node *root);
+	int treeHeight(){treeHeight(root);}
 };
 
 void tree :: createTree(){
   Node *holder, *node;
 	int value;
 	QueueArray q(100);
-	printf("Enter root value : ");
-	scanf("%d", &value);
+	cout<<"Enter root value:";
+	cin>>value;
 	root = new Node;
 	root->data = value;
 	root->left_child = root->right_child = NULL;
@@ -27,8 +31,8 @@ void tree :: createTree(){
 
 	while(! q.isEmpty()){
 		holder = q.dequeue();
-		printf("Enter left child of %d : ", holder->data);
-		scanf("%d", &value); 
+		cout<<"Enter left child of"<<holder->data;
+		cin>>value; 
 		if( value != -1){
 			node = new Node;
 			node->data = value;
@@ -36,8 +40,8 @@ void tree :: createTree(){
 			holder->left_child = node;
 			q.enqueue(node);
 		}
-		printf("Enter right child of %d : ", holder->data);
-		scanf("%d", &value); 
+		cout<<"Enter right child of :"<< holder->data;
+		cin>>value; 
 		if( value != -1){
 			node = new Node;
 			node->data = value;
@@ -50,7 +54,7 @@ void tree :: createTree(){
 
 void tree :: preorder(struct Node *holder){
 	if(holder){
-		printf("%d ", holder->data);
+		cout<<holder->data;
 		preorder(holder->left_child);
 		preorder(holder->right_child);
 	}
@@ -60,14 +64,14 @@ void tree :: postorder(struct Node *holder){
 	if(holder){
 		postorder(holder->left_child);
 		postorder(holder->right_child);
-		printf("%d ", holder->data);
+		cout<<holder->data;
 		}
 }
 
 void tree :: Inorder(struct Node *holder){
 	if(holder){
 		postorder(holder->left_child);
-		printf("%d ", holder->data);	
+		cout<<holder->data;
 		postorder(holder->right_child);
 	}
 }
@@ -88,5 +92,12 @@ int tree :: treeHeight(Node *root){
 int main(){
   tree t;
   t.createTree();
-  cout<<t.treeHeight(t.root);
+  cout<<t.treeHeight();
+	cout<<"inorder"<<endl;
+	t.Inorder();
+	cout<<"preorder"<<endl;
+	t.preorder();
+	cout<<"postorder"<<endl;
+	t.postorder();
+	return 0;
 }
