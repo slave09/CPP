@@ -50,8 +50,8 @@ LinkList :: ~LinkList()
 }
 
 /**
-*gives the lenght of the link list
-*@return the length of the linkList
+  * gives the lenght of the link list
+  * @return the length of the linkList
 */
 
 int LinkList :: getLength()
