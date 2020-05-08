@@ -91,8 +91,8 @@ int tree :: treeHeight(Node *root){
 int main(){
   tree t;
   t.createTree();
-  cout<<"Height of tree :"<<t.treeHeight(t.root)<<endl;
-	cout<<"inorder"<<endl;
+  cout<<"Height of tree is"<<t.treeHeight(t.root);
+	cout<<endl<<"inorder"<<endl;
 	t.Inorder();
 	cout<<endl<<"preorder"<<endl;
 	t.preorder();
