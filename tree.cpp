@@ -15,7 +15,6 @@ public:
 	void Inorder(){Inorder(root);}
   void postorder(Node * holder);
   int treeHeight(Node *root);
-	int treeHeight(){treeHeight(root);}
 };
 
 void tree :: createTree(){
@@ -31,7 +30,7 @@ void tree :: createTree(){
 
 	while(! q.isEmpty()){
 		holder = q.dequeue();
-		cout<<"Enter left child of"<<holder->data;
+		cout<<"Enter left child of"<<holder->data<<":";
 		cin>>value; 
 		if( value != -1){
 			node = new Node;
@@ -40,7 +39,7 @@ void tree :: createTree(){
 			holder->left_child = node;
 			q.enqueue(node);
 		}
-		cout<<"Enter right child of :"<< holder->data;
+		cout<<"Enter right child of"<< holder->data<<":";
 		cin>>value; 
 		if( value != -1){
 			node = new Node;
@@ -54,7 +53,7 @@ void tree :: createTree(){
 
 void tree :: preorder(struct Node *holder){
 	if(holder){
-		cout<<holder->data;
+		cout<<holder->data<<" " ;
 		preorder(holder->left_child);
 		preorder(holder->right_child);
 	}
@@ -64,14 +63,14 @@ void tree :: postorder(struct Node *holder){
 	if(holder){
 		postorder(holder->left_child);
 		postorder(holder->right_child);
-		cout<<holder->data;
+		cout<<holder->data<<" " ;
 		}
 }
 
 void tree :: Inorder(struct Node *holder){
 	if(holder){
 		postorder(holder->left_child);
-		cout<<holder->data;
+		cout<<holder->data<<" " ;
 		postorder(holder->right_child);
 	}
 }
@@ -92,12 +91,12 @@ int tree :: treeHeight(Node *root){
 int main(){
   tree t;
   t.createTree();
-  cout<<t.treeHeight();
+  cout<<"Height of tree :"<<t.treeHeight(t.root)<<endl;
 	cout<<"inorder"<<endl;
 	t.Inorder();
-	cout<<"preorder"<<endl;
+	cout<<endl<<"preorder"<<endl;
 	t.preorder();
-	cout<<"postorder"<<endl;
+	cout<<endl<<"postorder"<<endl;
 	t.postorder();
 	return 0;
 }
