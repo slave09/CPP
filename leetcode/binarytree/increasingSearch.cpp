@@ -18,4 +18,5 @@ public:
   	root->right = increasingBST(root->right, tail);
   	return tree;
   }
+  
 };
