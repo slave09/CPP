@@ -9,21 +9,7 @@
   * [Tree](https://github.com/najm09/CPP/tree/master/Tree)
 ### CPP Containers
   #### [Standatd template library (STL)](https://github.com/najm09/CPP/tree/master/STL)
-   * Vector
-   * Map
-   * unordered_map
 ### Problem Solving
   #### [Leetcode](https://github.com/najm09/CPP/tree/master/leetcode)
-   * Problemset:
-      * Easy
-      * medium
-      * Hard
-   * Topics:
-      * Array
-      * Linked List
-      * HashTable
   #### [Codeforces](https://github.com/najm09/CPP/tree/master/codeforces)
-   * Problemset:
-      * acmcsguru
-      * main
 -------
