@@ -17,16 +17,15 @@ class Solution {
 	string s = " ";
 public:
 	vector<string> binaryTreePaths(TreeNode* root) {
-		if(!root) return v;
-		if(!root->left && !root->right){
-			s += to_string(root->val);
-			v.push_back(s);
-			s = " ";
-			return v;
-		}
-		binaryTreePaths(root->left);
-		s += to_string(root->val) + "-" + ">";
-		binaryTreePaths(root->right);	
-		return v;
+	  if(!root) return v;
+	  if(! root->left && !root->right) {
+	    s = s + to_string(root->val);
+	    v.push_back(s);
+	    return v;
+    }
+	  binaryTreePaths(root->left) ;
+	  binaryTreePaths(root->right);
+	  s = s + to_string(root->val) + "-" + ">" ;
+	  return v;
 	}
 };
