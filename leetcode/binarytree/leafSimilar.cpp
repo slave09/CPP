@@ -21,5 +21,5 @@ class Solution {
 public:
 	bool leafSimilar(TreeNode* root1, TreeNode* root2) {
 		return sequence(root2) == sequence(root1);
-	}
+	}	
 };
