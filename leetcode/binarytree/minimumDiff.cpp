@@ -38,7 +38,7 @@ class Solution2 {
 public:
     int minDiffInBST(TreeNode* root) {
         if(root->left) minDiffInBST(root->left);
-        if(last >= 0) result = min(result, root->val);
+        if(last >= 0) result = min(result, root->val - last);
         last = root->val;
         if(root->right) minDiffInBST(root->right);
         return result;
