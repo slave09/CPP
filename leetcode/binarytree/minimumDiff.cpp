@@ -21,12 +21,20 @@ public:
     int minDiffInBST(TreeNode* root) {
         if(!root) return 0;
         inorder(root);
-        int last  = 0;
+        int last  = *s.begin();
+        s.erase(s.begin());
         int minim = INT_MAX;
+        for(auto i: s) cout << i << " ";
         for (auto it = s.begin(); it != s.end(); ++it){
             minim = min(minim, *it - last);
             last = *it;
         } 
         return minim;
+    }
+};
+
+class Solution2 {
+public:
+    int minDiffInBST(TreeNode* root) {
     }
 };
