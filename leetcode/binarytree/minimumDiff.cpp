@@ -34,7 +34,13 @@ public:
 };
 
 class Solution2 {
+    int result = INT_MAX, last = -1;
 public:
     int minDiffInBST(TreeNode* root) {
+        if(root->left) minDiffInBST(root->left);
+        if(last >= 0) result = min(result, root->val);
+        last = root->val;
+        if(root->right) minDiffInBST(root->right);
+        return result;
     }
 };
