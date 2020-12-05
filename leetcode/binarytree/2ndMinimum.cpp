@@ -24,4 +24,3 @@ public:
         s.erase(s.begin());
         return *s.begin();
     }
-};
