@@ -18,21 +18,22 @@ public:
 
 class Solution {
     void connect_right(Node* root){
-        if(root->next){
-            if(root->next->left){
-                if(root->left) root->left->next = root->next->left;
-                else root->right->next = root->next->left; 
-            }
+        if(root->left && !root->left->next){
+            if(root->next && root->next->left) root->left->next = root->next->left;
+            else if(root->next && root->next->right) root->left->next = root->next->right;
         }
-        else left ? root->left->next = NULL : root->right->next = NULL;
+        else if(root->right && !root->right->next){
+            if(root->next && root->next->left) root->right->next = root->next->left;
+            else if(root->next && root->next->right) root->right->next = root->next->right;
+        }
     }
 public:
     Node* connect(Node* root) {
-        if(root->left && root->right)
-            root->left->next = root->right;
-        if(root->left && !root->right) connect_right(root);
-        if(root->right && !root->left) connect_right(root);
-        connect(root->left);
+        if(!root) return root;
+            if(root->left && root->right) root->left->next = root->right;
+            connect_right(root);
+            connect(root->left);
+            connect(root->right);
         return root;
-        }
-    };
+    }
+};
