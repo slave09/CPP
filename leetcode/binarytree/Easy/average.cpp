@@ -17,9 +17,9 @@ public:
         queue<TreeNode*>q;
         stack<TreeNode*> stk;
         
-	double firstAvg = root -> val;
+        double firstAvg = root -> val;
 
-	averages.push_back(firstAvg);
+        averages.push_back(firstAvg);
         q.push(root);
         
         do{
@@ -32,7 +32,7 @@ public:
                 q.pop();
             }
 
-	    if(st.empty()) return averages;
+            if(st.empty()) return averages;
             
             double size = stk.size();
             
@@ -51,42 +51,42 @@ public:
         }while(!q.empty());
         
         return averages;
-            
+        
     }
 };
 
 class Solution{
-	public:
-		vector<double> averageOfLevels(TreeNode* root){
-			if(!root) return {};
+public:
+  vector<double> averageOfLevels(TreeNode* root){
+     if(!root) return {};
 
-			queue<TreeNode*> queue;
-			vector<double>averages;
+     queue<TreeNode*> queue;
+     vector<double>averages;
 
-			queue.push(root);
+     queue.push(root);
 
-			while(!queue.empty()){
+     while(!queue.empty()){
 
-				double size = queue.size();
+        double size = queue.size();
 
-				double sum == 0.00;
+        double sum == 0.00;
 
-				TreeNode *front = queue.front();
+        TreeNode *front = queue.front();
 
-				for(int node = 0; node < size; ++node){
-					
-					TreeNode *front = queue.front();
-					queue.pop();
-					
-					sum += front -> val;
+        for(int node = 0; node < size; ++node){
+           
+           TreeNode *front = queue.front();
+           queue.pop();
+           
+           sum += front -> val;
 
-					if(front -> left) queue.push(front -> left);
-					if(front -> right) queue.push(front -> right);
-				}
+           if(front -> left) queue.push(front -> left);
+           if(front -> right) queue.push(front -> right);
+       }
 
-				averages.push(sum / size);
-			}
+       averages.push(sum / size);
+   }
 
-			return averages;
-		}
+   return averages;
+}
 };
