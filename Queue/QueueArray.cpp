@@ -1,6 +1,6 @@
 /*
-	Author Fakhra Najm
-	EMail fnajm09@gmail.com
+	Author : Fakhra Najm
+	Email  : fnajm09@gmail.com
 */
 
 #include<iostream>
