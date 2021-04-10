@@ -1,39 +1,55 @@
 
 class Solution {
-	
-	map<int,int>number_lookup;
 
-	vector<int>twoSum(vector<int>nums, int val, int starting_position){
-		while(starting_position < nums.size()){
-			if((val - number_lookup[nums[starting_position++]]) > 0)
-				return {val - number_lookup[nums[starting_position++]], number_lookup[nums[starting_position++]]};
+	int search(vector<int>nums, int val,int index){
+		int low = 0, high = nums.size() - 1 ;
+		while(low <= high){
+			int mid = low + (high - low)/2;
+			if(mid == index) low = mid - 1;
+			else if(nums[mid] == val) 
+				return mid;
+			else if(nums[mid] > val) 
+				high = mid - 1;
+			else 
+				low = mid + 1;
 		}
-		return {};	
+		return -1;
+	}
+
+	vector<int> twoSum(vector<int>nums, int val, int index){
+		for(int i = index; i < nums.size(); ++i){
+			int key = search(nums, val - nums[i], i );
+			if(key != -1){
+				cout << nums[i] << nums[key] <<  " ";
+				return {nums[i], val-nums[i]};
+			}
+		}
+		return {};
 	}
 
 public:
 	vector<vector<int>> threeSum(vector<int>& nums) {
+    
+    if(nums.size() == 0) return {};
+    
+		vector<vector<int>> three_sum;
+		set<vector<int>> set;
+		sort(nums.begin(), nums.end());
 
-		for(auto num : nums )
-			number_lookup[num]++;
-
-		if(number_lookup.size() == 1){
-			if(number_lookup[0] >= 3)return{{0, 0, 0}};
-			else return {};
-		}
-
-		set<vector<int>>set;
-		vector<vector<int>> _3sum;
+		if(nums.front() == 0 && nums.back() == 0 && nums.size() >= 3) return {{0,0,0}};
+		if(nums.front() >= 0 || nums.back() < 0) return {};
 
 		for(int i = 0; i < nums.size(); ++i){
-			vector<int>_2sum = twoSum(nums, 0 - nums[i], i + 1);
-			if(_2sum.size() !=  0){
-				_2sum.push_back(nums[i]);
-				_3sum.push_back(_2sum);
+			vector<int> complement_pairs = twoSum(nums, -1*nums[i], i + 1);
+			if(complement_pairs.size() == 2){
+				complement_pairs.push_back(nums[i]);
+				sort(complement_pairs.begin(), complement_pairs.end());
+				set.insert(complement_pairs);
 			}
 		}
 
-		return _3sum;
-
+		for(auto s : set)
+			three_sum.push_back(s);
+		return three_sum;
 	}
 };
