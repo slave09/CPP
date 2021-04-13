@@ -1,55 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
 
 class Solution {
 
-	int search(vector<int>nums, int val,int index){
-		int low = 0, high = nums.size() - 1 ;
-		while(low <= high){
-			int mid = low + (high - low)/2;
-			if(mid == index) low = mid - 1;
-			else if(nums[mid] == val) 
-				return mid;
-			else if(nums[mid] > val) 
-				high = mid - 1;
-			else 
-				low = mid + 1;
-		}
-		return -1;
-	}
-
-	vector<int> twoSum(vector<int>nums, int val, int index){
-		for(int i = index; i < nums.size(); ++i){
-			int key = search(nums, val - nums[i], i );
-			if(key != -1){
-				cout << nums[i] << nums[key] <<  " ";
-				return {nums[i], val-nums[i]};
-			}
-		}
-		return {};
-	}
-
 public:
 	vector<vector<int>> threeSum(vector<int>& nums) {
-    
-    if(nums.size() == 0) return {};
-    
-		vector<vector<int>> three_sum;
-		set<vector<int>> set;
-		sort(nums.begin(), nums.end());
 
-		if(nums.front() == 0 && nums.back() == 0 && nums.size() >= 3) return {{0,0,0}};
-		if(nums.front() >= 0 || nums.back() < 0) return {};
+		if(nums.size() < 3) return {};
 
-		for(int i = 0; i < nums.size(); ++i){
-			vector<int> complement_pairs = twoSum(nums, -1*nums[i], i + 1);
-			if(complement_pairs.size() == 2){
-				complement_pairs.push_back(nums[i]);
-				sort(complement_pairs.begin(), complement_pairs.end());
-				set.insert(complement_pairs);
+		int size = nums.size();
+		map<int,int>lookup;
+		vector<vector<int>>threeSumTriplets;
+		set<vector<int>>triplets;
+
+		for(auto num : nums)
+			lookup[num]++;
+
+		if(lookup.size() == 1 && lookup[0] > 2) return {{0,0,0}};
+
+		for(int index = 0; index < size; ++index){
+
+			int val = nums[index];
+			int toFind = -1 * val;
+
+			for(int key = index + 1; key < size; ++key){
+
+				int value = toFind - nums[key];
+
+				if(lookup[value] > 0){
+					if(val == nums[key] == value && lookup[value] >= 3){
+						triplets.insert({value,value,value});
+						break;
+					}
+					else if( ( value != val && value != nums[key]) || lookup[value] > 1){
+						int maxim = max(max(val, value), nums[key]);
+						int minima = min(min(val, value), nums[key]);
+						triplets.insert({maxim, 0 - maxim - minima, minima});
+						break;
+					}
+				}
 			}
 		}
 
-		for(auto s : set)
-			three_sum.push_back(s);
-		return three_sum;
+		for(auto triples : triplets)
+			threeSumTriplets.push_back(triples);
+
+		return threeSumTriplets;
 	}
 };
+
+int main(){
+
+	Solution _3sum;
+	vector<int> nums = {-2,0,0,2,2};
+	vector<vector<int>> num = _3sum.threeSum(nums);
+	for(int i = 0; i < num.size(); ++i){
+		cout << "[" ;
+		for(int j = 0; j < 3; ++j)
+			cout << num[i][j] << ",";
+		cout << "],";
+	}
+	return 0;
+}
