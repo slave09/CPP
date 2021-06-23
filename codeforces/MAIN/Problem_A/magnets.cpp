@@ -6,7 +6,7 @@ int main(){
 	cin >> number_of_magnets;
 
 	string last_combination = "";
-	int groups = 0q;
+	int groups = 0;
 
 	while(number_of_magnets--){
 		string present_combination;
