@@ -18,7 +18,8 @@ public:
 	void setReal(float real){this -> real = real;}
 
 // Operator overloading 
-	Complex operator+(Complex complex_number);
+	// Complex operator+(Complex complex_number);
+	friend Complex operator+(Complex first, Complex second);
 
 };
 
@@ -49,12 +50,22 @@ Complex :: Complex(Complex &number){
 	setImaginary(number.imaginary);
 }
 
-Complex Complex :: operator+(Complex complex_number){ 
-
+Complex operator+(Complex first, Complex second){
 	Complex sum;
 
-	sum.real = real + complex_number.real;
-	sum.imaginary = imaginary + complex_number.imaginary;
+	sum.real = first.real + second.real;
+	sum.imaginary = first.imaginary + second.imaginary;
 
 	return sum;
+
 }
+
+// Complex Complex :: operator+(Complex complex_number){ 
+
+// 	Complex sum;
+
+// 	sum.real = real + complex_number.real;
+// 	sum.imaginary = imaginary + complex_number.imaginary;
+
+// 	return sum;
+// }
