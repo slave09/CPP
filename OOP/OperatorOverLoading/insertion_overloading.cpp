@@ -20,7 +20,9 @@ public:
 	// Addition Operator overloading 
 	friend Complex operator+(Complex first, Complex second);
 	// insertion operator overloading
-	friend ostream & operator<<(ostream &o, Complex number);
+	// for continue operation of cout << return ostream is necessary here
+	// otherwise single cout << will give us result with void function
+	friend ostream & operator<<(ostream &out, Complex number);
 
 };
 
@@ -40,14 +42,14 @@ int main(){
 
 /*
 	* insertion operator overloading
-	* @param o reference to the ostream object
+	* @param out reference to the ostream object
 	* @param number reference of object of Complex
 	* @return ostream object
 */
 
-ostream & operator<<(ostream &o, Complex number){
-	o << number.real << " + " << number.imaginary << "i" << endl;
-	return o;
+ostream & operator<<(ostream &out, Complex number){
+	out << number.real << " + " << number.imaginary << "i" << endl;
+	return out;
 }
 
 
