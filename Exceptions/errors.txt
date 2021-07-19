@@ -27,3 +27,8 @@ There are Three types of Errors :-
 	* These Exceptions can be handelled by the program only
 	* In these situations program should reflect the problem to user so that the
 	 	user will fix it.
+*************************************************************
+
+Ques : Why are we using try catch ? It's same as if else conditional statements.
+
+Ans : Using try catch construct we can handle exceptions between two functions.
