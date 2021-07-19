@@ -1,0 +1,29 @@
+There are Three types of Errors :- 
+	1. Syntax Errors
+	2. Logical Errors
+	3. Runtime Errors
+*********************************
+1. SYNTAX ERRORS: 
+	* Arises due to some spelling mistakes or bad syntax
+	* Can't be compiled
+	* can be solved with the help of compiler
+	* This type of error occurs during development time 
+	* Programmer Related Error
+***********************************
+2. LOGICAL ERRORS:
+	* Arises due to the bad logic taken by programmer
+	* program is compiled but the result is incorrect
+	* occurs at Development time 
+	* Programmer Related error
+	* Can be solved with the help of Debugger
+************************************
+3. Runtime Errors:
+	* user related errors
+	* due to bad input
+	* due to lack of resources like internet, printer, device....etc
+	* Program stops abruptly
+	* It's not development side error
+	* RUNTIME ERRORS ARE CALLED EXCEPTIONS
+	* These Exceptions can be handelled by the program only
+	* In these situations program should reflect the problem to user so that the
+	 	user will fix it.
