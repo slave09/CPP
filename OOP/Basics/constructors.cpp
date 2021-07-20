@@ -20,35 +20,35 @@ public:
 	
 	// Non parameterized Constructor
 
-	// Rectangle(){
-	// 	length = 0;
-	// 	breadth = 0;
-	// }
+	Rectangle(){
+		setLength(0);
+		setBreadth(0);
+	}
 
  	// parameterized Constructor
 
-	Rectangle(int len = 0, int bth = 0){
-		setLength(len);
-		setBreadth(bth);
+	Rectangle(int length, int breadth){
+		setLength(length);
+		setBreadth(breadth);
 	}
 
 	// Copy Constructor 
-	// Shalow Copy constructor
+	// Shallow Copy constructor
 
 	Rectangle(Rectangle &rect){
-		length = rect.length;
-		breadth = rect.breadth;
+		setLength(rect.length);
+		setBreadth(rect.breadth);
 	}
 	// Mutators or Setters
 
-	void setLength(float len){// validation as length cannot be negative
-		if(len < 0) length = 0; // setting to default value of 0
-		else length = len;
+	void setLength(float length){// validation as length cannot be negative
+		if(length < 0) this -> length = 0; // setting to default value of 0
+		else this -> length = length;
 	}
 
-	void setBreadth(float bth){ // validation as Breadth cannot be negative
-		if(bth < 0) breadth = 0; // setting to default value of 0
-		else breadth = bth;
+	void setBreadth(float breadth){ // validation as Breadth cannot be negative
+		if(breadth < 0) this -> breadth = 0; // setting to default value of 0
+		else this -> breadth = breadth;
 	}
 
 	// Accessors or getters
@@ -59,6 +59,12 @@ public:
 
 	// Member Functions or Fascillatators
 
+	void getDetails(){
+		cout << "length : " << getLength() ;
+		cout << "\tbreadth : " << getBreadth();
+		cout << "\tArea : " << area() << endl; 
+	}
+
 	float area(){return length * breadth;}
 
 	float perimeter(){return 2 * (length + breadth);}
@@ -68,18 +74,13 @@ public:
 int main(){
 
 	Rectangle rect;
-	cout << "length : " << rect.getLength() ;
-	cout << " breadth : " << rect.getBreadth();
-	cout << " Area : " << rect.area() << endl; 
+	rect.getDetails();
 
 	Rectangle rec(10, 5);
-	cout << "length : " << rec.getLength() ;
-	cout << " breadth : " << rec.getBreadth() ;
-	cout << " Area : " << rec.area() << endl; 
+	rec.getDetails();
 
 	Rectangle copy(rec);
-	cout << "length : " << copy.getLength() ;
-	cout << " breadth : " << copy.getBreadth() ;
-	cout << " Area : " << copy.area() << endl; 
+	copy.getDetails();
+	
 	return 0;
 }
