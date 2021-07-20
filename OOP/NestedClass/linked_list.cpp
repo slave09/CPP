@@ -3,18 +3,22 @@ using namespace std;
 
 class LinkedList{
 	class Node {
-		public:
-			int val;
-			Node *next;
+	public:
+		int val;
+		Node *next;
+		static Node * createNode(int val){
+			Node *node = new Node;
+			node -> val = val;
+			node -> next = NULL;
+			return node;
+		}
 	};
 public:
 	Node *head;
 	LinkedList();
 	LinkedList(int val);
 	LinkedList(int val, Node *next);
-	// LinkedList(ListNode &node);
-
-	// Node * createNode(int val);
+	LinkedList(Node * &node);
 	void insert(int val);
 	void Remove(int val);
 	void Display();
@@ -37,30 +41,21 @@ LinkedList :: LinkedList(int val, Node *next){
 	head -> next = next;
 }
 
-// LinkedList :: LinkedList(ListNode &node){
-// 	head = new Node;
-// 	Node *itr = head;
-// 	while(node){
-// 		itr -> val = node -> val;
-// 		node = node -> next;
-// 		itr = itr -> next; 
-// 	}
-// 	itr -> next = NULL;
-// }
+LinkedList :: LinkedList(Node * &node){
+	head = new Node;
+	Node *itr = head;
+	Node *ref = node;
 
-// Node * LinkedList :: createNode(int val){
-// 	Node *node = new Node;
+	while(ref){
+		itr -> val = ref -> val;
+		ref = ref -> next;
+		itr = itr -> next;
+	}
 
-// 	node -> val = val;
-// 	node -> next = NULL;
-
-// 	return node;
-// }
+}
 
 void LinkedList :: insert(int val){
-	Node *node = new Node;
-	node -> val = val;
-	node -> next = NULL;
+	Node *node = Node::createNode(val);
 	if(!head){
 		head = node;
 		return ;
@@ -80,10 +75,34 @@ void LinkedList :: Display(){
 	cout << endl;
 }
 
+void LinkedList :: Remove(int val){
+	if(head -> val == val) head = head -> next;
+	else{
+		Node *ptr = head;
+		while(ptr && ptr -> next){
+			if(ptr -> next -> val == val){
+				Node *temp = ptr -> next;
+				ptr -> next = ptr -> next -> next;
+				delete temp;
+				return;
+			}
+			ptr  = ptr -> next;
+		}
+	}
+}
+
 int main(){
 	LinkedList list(10);
 	list.insert(20);
+	list.insert(30);
+	list.insert(40);
+	list.insert(50);
+	list.insert(60);
 	list.Display();
+	list.Remove(20);
+	list.Display();
+	LinkedList new_list(list);
+	new_list.Display();
 	return 0;
 
 }
