@@ -13,8 +13,10 @@ class LinkedList{
 			return node;
 		}
 	};
-public:
+
 	Node *head;
+
+public:
 	LinkedList();
 	LinkedList(int val);
 	LinkedList(int val, Node *next);
@@ -98,10 +100,15 @@ int main(){
 	list.insert(40);
 	list.insert(50);
 	list.insert(60);
+	cout << "List:\n";
 	list.Display();
 	list.Remove(20);
+	cout << "After Removing 20" << endl;
+	cout << "List:\t";
 	list.Display();
 	LinkedList new_list(list);
+	cout << "Copied List" << endl;
+	cout << "List:\t";
 	new_list.Display();
 	return 0;
 
