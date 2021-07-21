@@ -9,7 +9,7 @@
   - [Queue](https://github.com/najm09/CPP/tree/master/Queue)
   - [Tree](https://github.com/najm09/CPP/tree/master/Tree)
   - [Matrix](https://github.com/najm09/CPP/tree/master/Matrix)
-- ### [Object Oiented Programming](https://github.com/najm09/CPP/tree/master/OOP)
+- ### [Object Oriented Programming](https://github.com/najm09/CPP/tree/master/OOP)
   - [Basics](https://github.com/najm09/CPP/tree/master/OOP/Basics)
   - [Inheritance](https://github.com/najm09/CPP/tree/master/OOP/Inheritance)
   - [OperatorOverloading](https://github.com/najm09/CPP/tree/master/OOP/OperatorOverLoading)
