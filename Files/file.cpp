@@ -5,8 +5,8 @@ using namespace std;
 
 int main(){
 	
-	ofstream Data("data.txt");
-	Data << "My name is Fakhra Najm I am a student of Electrical Engineering";
+	ofstream Data("data.txt", ios :: trunc);
+	Data << "Fakhra Najm";
 	Data.close();
 	
 	string detail;
