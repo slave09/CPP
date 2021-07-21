@@ -1,7 +1,7 @@
 
 ## Directories Description
 
-- ### Data Structures
+- ### [Data Structures](https://github.com/najm09/CPP/tree/master/DataStructures)
   - [Arrays](https://github.com/najm09/CPP/tree/master/Array)
   - [LinkedList](https://github.com/najm09/CPP/tree/master/LinkedList)
   - [Stack](https://github.com/najm09/CPP/tree/master/Stack)
