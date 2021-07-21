@@ -1,2 +1,1 @@
-# C++ Programming Language
 
