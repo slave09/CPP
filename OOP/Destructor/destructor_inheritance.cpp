@@ -7,7 +7,7 @@ public:
 		cout << "Base Class Constructor " << endl;
 	}
 
-	~Base(){
+	virtual ~Base(){ // so that during runtime polymorphism all the destructors are called
 		cout << "Base class Destructor " << endl;
 	}
 
@@ -24,7 +24,13 @@ public:
 	}
 };
 
+void function(){
+	Base *ptr = new Derived();
+	delete ptr;
+}
+
 int main(){
 	Derived d;	
+	function();	
 	return 0;
 }
