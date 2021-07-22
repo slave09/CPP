@@ -9,18 +9,22 @@ int main(){
 	Data << "Fakhra Najm";
 	Data.close();
 	
-	string detail;
-
 	string firstName;
 	string secondName;
 
-	ifstream myData("data.txt");
+	// ifstream myData("data.txt");
 
-	myData >> firstName >> secondName;
+	ifstream myData;
 
-	myData.close();
+	myData.open("data.txt");
 
-	cout << firstName << " " << secondName ;
+	if(myData.is_open()){
+		
+		myData >> firstName >> secondName;
+		myData.close();
+
+		cout << firstName << " " << secondName ;
+	}
 
 	return 0;
 
