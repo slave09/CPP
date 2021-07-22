@@ -11,13 +11,16 @@ int main(){
 	
 	string detail;
 
+	string firstName;
+	string secondName;
+
 	ifstream myData("data.txt");
 
-	while(getline(myData, detail)){
-		cout << detail << endl;
-	}
+	myData >> firstName >> secondName;
 
 	myData.close();
+
+	cout << firstName << " " << secondName ;
 
 	return 0;
 
