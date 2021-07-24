@@ -5,6 +5,13 @@ using namespace std;
 
 #define MIN_BALANCE 500
 
+class InsufficientBalance{
+	public : 
+		void message(){
+			cout << "You have to deposit atleast "  << MIN_BALANCE << " to open an account" << endl;
+		}
+};
+
 class Account{
 private:
 	static long account_id;
@@ -71,6 +78,7 @@ int main()
 		Account account;
 		switch(choice){
 			case 1 : 
+			try{
 				cout << "Enter First Name : " << endl;
 				cin >> firstName;
 				cout << "Enter Last Name : " << endl;
@@ -79,40 +87,42 @@ int main()
 				cin >> balance;
 				account = bank.openAccount(firstName, lastName, balance); 
 				cout << account << endl;
+			}
+			catch(InsufficientBalance err) {err.message();}
 			break;
 			case 2 :
-				cout << "Enter Account Number : " << endl;
-				cin >> accountNumber;
-				account = bank.BalanceEnquiry(accountNumber);
-				cout << account << endl; 
+			cout << "Enter Account Number : " << endl;
+			cin >> accountNumber;
+			account = bank.BalanceEnquiry(accountNumber);
+			cout << account << endl; 
 			break;
 			case 3 :
-				cout << "Enter account number : " << endl;
-				cin >> accountNumber;
-				cout << "Enter value to be deposited : " << endl;
-				cin >> balance;
-				account = bank.deposit(accountNumber, balance);
-				cout << account << endl;
+			cout << "Enter account number : " << endl;
+			cin >> accountNumber;
+			cout << "Enter value to be deposited : " << endl;
+			cin >> balance;
+			account = bank.deposit(accountNumber, balance);
+			cout << account << endl;
 			break;
 			case 4 :
-				cout << "Enter Account Number " << endl;
-				cin >> accountNumber;
-				cout << "Enter value to be withdraw : " << endl;
-				cin >> balance;
-				account = bank.withdraw(accountNumber, balance);
-				cout << account << endl;
+			cout << "Enter Account Number " << endl;
+			cin >> accountNumber;
+			cout << "Enter value to be withdraw : " << endl;
+			cin >> balance;
+			account = bank.withdraw(accountNumber, balance);
+			cout << account << endl;
 			break;
 			case 5 :
-				cout << "Enter Account Number " << endl;
-				cin >> accountNumber;
-				bank.closeAccount(accountNumber);
+			cout << "Enter Account Number " << endl;
+			cin >> accountNumber;
+			bank.closeAccount(accountNumber);
 			break;
 			case 6 :
-				bank.showAllAccounts();
+			bank.showAllAccounts();
 			break;
 			case 7 : break;
 			default :
-				cout << "Invalid choice !" << endl;
+			cout << "Invalid choice !" << endl;
 			break;
 		}
 	}while(choice != 7);
@@ -140,7 +150,7 @@ void Account :: setLastName(string lastName){
 }
 
 void Account :: setBalance(float balance){
-	this -> balance = balance > MIN_BALANCE ? balance : MIN_BALANCE;
+	this -> balance = balance > MIN_BALANCE ? balance : throw InsufficientBalance();
 }
 
 void Account :: setAccountNumber(){
@@ -235,6 +245,7 @@ Account Bank :: deposit (long accountNumber, float amount){
 }
 
 void Bank :: showAllAccounts(){
+	if(customer.size() == 0) return;
 	for(auto itr = customer.begin(); itr != customer.end(); ++itr){
 		cout << "Account " << itr -> first << endl;
 		cout << itr -> second << endl;
