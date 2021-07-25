@@ -19,9 +19,10 @@ public:
 	void setFirstName(string firstName);
 	void setLastName(string lastName);
 	void setBalance(float balance);
-	void setAccountNumber();
+	void setAccountNumber(long accountNumber);
+	void setDefaultAccountNumber();
 
-	static long getAccoundId(){return account_id;}
+	static long getAccoundId(){return ++account_id;}
 	long getAccountNumber(){return accountNumber;}
 
 	void deposite(float amount);
@@ -138,14 +139,11 @@ int main()
 long Account :: account_id = 0;
 
 Account :: Account(string firstName, string lastName, float balance){
-
-	account_id++;	
+	setDefaultAccountNumber();
 	setFirstName(firstName);
 	setLastName(lastName);
 	setBalance(balance);
-	setAccountNumber();
 }
-
 
 void Account :: setFirstName(string firstName){
 	this -> firstName = firstName;
@@ -159,8 +157,12 @@ void Account :: setBalance(float balance){
 	this -> balance = balance >= MIN_BALANCE ? balance : throw InsufficientBalance();
 }
 
-void Account :: setAccountNumber(){
+void Account :: setDefaultAccountNumber(){
 	accountNumber = getAccoundId();
+}
+
+void Account :: setAccountNumber(long accountNumber){
+	this -> accountNumber = accountNumber;
 }
 
 void Account :: deposite(float balance){
@@ -212,7 +214,9 @@ Bank :: Bank(){
 
 Account Bank :: openAccount(string firstName, string lastName, float balance){
 	Account account(firstName, lastName, balance);
-
+	if(customer.find(account.getAccountNumber()) != customer.end()){
+		account.setAccountNumber((long)customer.size() + 1);
+	}
 	customer[account.getAccountNumber()] = account;
 
 	ofstream bankFile("bank.txt", ios :: trunc);
