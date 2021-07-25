@@ -1,16 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include "systemError.h"
 using namespace std;
-
-#define MIN_BALANCE 500
-
-class InsufficientBalance{
-	public : 
-		void message(){
-			cout << "You have to deposit atleast "  << MIN_BALANCE << " to open an account" << endl;
-		}
-};
 
 class Account{
 private:
@@ -91,34 +83,48 @@ int main()
 			catch(InsufficientBalance err) {err.message();}
 			break;
 			case 2 :
-			cout << "Enter Account Number : " << endl;
-			cin >> accountNumber;
-			account = bank.BalanceEnquiry(accountNumber);
-			cout << account << endl; 
+			try{			
+				cout << "Enter Account Number : " << endl;
+				cin >> accountNumber;
+				account = bank.BalanceEnquiry(accountNumber);
+				cout << account << endl; 
+			}
+			catch(AccountNotFound err) {err.notFound();}
 			break;
 			case 3 :
-			cout << "Enter account number : " << endl;
-			cin >> accountNumber;
-			cout << "Enter value to be deposited : " << endl;
-			cin >> balance;
-			account = bank.deposit(accountNumber, balance);
-			cout << account << endl;
+			try{
+				cout << "Enter account number : " << endl;
+				cin >> accountNumber;
+				cout << "Enter value to be deposited : " << endl;
+				cin >> balance;
+				account = bank.deposit(accountNumber, balance);
+				cout << account << endl;
+			}
+			catch(AccountNotFound err) {err.notFound();}
 			break;
 			case 4 :
-			cout << "Enter Account Number " << endl;
-			cin >> accountNumber;
-			cout << "Enter value to be withdraw : " << endl;
-			cin >> balance;
-			account = bank.withdraw(accountNumber, balance);
-			cout << account << endl;
+			try{
+				cout << "Enter Account Number " << endl;
+				cin >> accountNumber;
+				cout << "Enter value to be withdraw : " << endl;
+				cin >> balance;
+				account = bank.withdraw(accountNumber, balance);
+				cout << account << endl;
+			}
+			catch(AccountNotFound err) {err.notFound();}
+			catch(InsufficientBalance err){ err.withdrawalUnsuccess();}
 			break;
 			case 5 :
-			cout << "Enter Account Number " << endl;
-			cin >> accountNumber;
-			bank.closeAccount(accountNumber);
+			try{
+				cout << "Enter Account Number " << endl;
+				cin >> accountNumber;
+				bank.closeAccount(accountNumber);
+			}
+			catch(AccountNotFound err) {err.notFound();}
 			break;
 			case 6 :
-			bank.showAllAccounts();
+			try{bank.showAllAccounts();}
+			catch(AccountNotFound err){err.noAccountFound();}
 			break;
 			case 7 : break;
 			default :
@@ -150,7 +156,7 @@ void Account :: setLastName(string lastName){
 }
 
 void Account :: setBalance(float balance){
-	this -> balance = balance > MIN_BALANCE ? balance : throw InsufficientBalance();
+	this -> balance = balance >= MIN_BALANCE ? balance : throw InsufficientBalance();
 }
 
 void Account :: setAccountNumber(){
@@ -162,6 +168,7 @@ void Account :: deposite(float balance){
 }
 
 void Account :: withdraw(float balance){
+	if(this -> balance < balance) throw InsufficientBalance();
 	this -> balance -= balance;
 }
 
@@ -221,17 +228,20 @@ Account Bank :: openAccount(string firstName, string lastName, float balance){
 
 void Bank :: closeAccount(long accountNumber){
 	auto itr = customer.find(accountNumber);
+	if(itr == customer.end()) throw AccountNotFound();
 	customer.erase(itr);
 	cout << "Account closed successfully ! " << endl;
 }
 
 Account Bank :: BalanceEnquiry(long accountNumber){
 	auto itr = customer.find(accountNumber);
+	if(itr == customer.end()) throw AccountNotFound();
 	return itr -> second;
 }
 
 Account Bank :: withdraw (long accountNumber, float amount){
 	auto itr = customer.find(accountNumber);
+	if(itr == customer.end()) throw AccountNotFound();
 	itr -> second.withdraw(amount);
 	cout << amount << " Value withdrawn !" << endl;
 	return itr -> second;
@@ -239,13 +249,14 @@ Account Bank :: withdraw (long accountNumber, float amount){
 
 Account Bank :: deposit (long accountNumber, float amount){
 	auto itr = customer.find(accountNumber);
+	if(itr == customer.end()) throw AccountNotFound();
 	itr -> second.deposite(amount);
 	cout << amount << " Value deposited ! " << endl;
 	return itr -> second;
 }
 
 void Bank :: showAllAccounts(){
-	if(customer.size() == 0) return;
+	if(customer.size() == 0) throw AccountNotFound();
 	for(auto itr = customer.begin(); itr != customer.end(); ++itr){
 		cout << "Account " << itr -> first << endl;
 		cout << itr -> second << endl;
