@@ -30,13 +30,10 @@ int main(){
 	Complex first(5,5);
 	Complex second(6,9);
 	Complex sum;
-
 	sum = first + second;
-
 	cout << first ;
 	cout << second ;
 	cout << sum << endl;
-
 	return 0;
 }
 
@@ -51,7 +48,6 @@ ostream & operator<<(ostream &out, Complex number){
 	out << number.real << " + " << number.imaginary << "i" << endl;
 	return out;
 }
-
 
 Complex :: Complex(){
 	setReal(0);
@@ -70,10 +66,7 @@ Complex :: Complex(Complex &number){
 
 Complex operator+(Complex first, Complex second){
 	Complex sum;
-
 	sum.real = first.real + second.real;
 	sum.imaginary = first.imaginary + second.imaginary;
-
 	return sum;
-
 }
