@@ -17,13 +17,13 @@ int partition(int A[], int low, int high){
 void quickSort(int A[], int low, int high){
   if(low > high) return;
   int pivot = partition(A, low, high);
-  if(pivot >= high) return;
-  quickSort(A, low, pivot);
+  if(pivot > high) return;
+  quickSort(A, low, pivot - 1);
   quickSort(A, pivot + 1, high);
 }
 
 int main(){
-	int arr[10] = {5,2,3,1,6,8,4,9,7,10};
+	int arr[10] = {1,2,3,4,45,6,5,4,3,22};
 	quickSort(arr, 0, 9);
 	for(auto num : arr) cout << num << " ";
 	cout << endl;
