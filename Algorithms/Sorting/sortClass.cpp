@@ -6,18 +6,19 @@ class Sort{
   int size;
   vector<int> array;
 public:
-  Sort(std::vector<int> arr);
+  Sort(vector<int> arr);
   int getSize(){return this -> size;}
   void bubbleSort();
   void insertionSort();
+  void selectionSort();
   void quickSort(int low, int high);
-  int partitionIndex(int low, int high);
+  int partitionIndex(int low, int high, int pivot);
   void print();
 };
 
 int main(){
   Sort Arr({1,2,3,4,45,6,5,4,3,22});
-  Arr.insertionSort();
+  Arr.quickSort();
   Arr.print();
   return 0;
 }
@@ -59,7 +60,20 @@ void Sort :: insertionSort(){
   }
 }
 
-int Sort :: partitionIndex(int low, int high){
+void Sort :: selectionSort(){ // (n - 1) passes are required  
+  for(int index = 0; index < size - 1; ++index){
+    int minValIndex = index;
+    for(int beginItr = minValIndex; beginItr < size; ++beginItr){
+      if(array[minValIndex] > array[beginItr]){
+        minValIndex = beginItr;
+      }
+    }
+    swap(array[minValIndex], array[index]);
+  }
+}
+
+int Sort :: partitionIndex(int low, int high, int pivot){
+  swap(array[pivot], array[high]);
   int storeIndex = low;
   for(int index = low; index <= high; ++index){
     if(array[high] > array[index]){
@@ -72,7 +86,9 @@ int Sort :: partitionIndex(int low, int high){
 
 void Sort :: quickSort(int low, int high){
   if(low > high) return;
-  int pivot = partitionIndex(low, high);
+
+  int pivot = low + rend() % (high - low + 1);
+  pivot = partitionIndex(low, high, pivot);
   if(pivot > high) return;
   quickSort(low, pivot - 1);
   quickSort(pivot + 1, high);

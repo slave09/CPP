@@ -3,12 +3,12 @@
 ## Directories Description
 
 ### 1. [Data Structures](https://github.com/najm09/CPP/tree/master/DataStructures)
-  [Arrays](https://github.com/najm09/CPP/tree/master/Array) &nbsp;
-  [LinkedList](https://github.com/najm09/CPP/tree/master/LinkedList) &nbsp;
-  [Stack](https://github.com/najm09/CPP/tree/master/Stack) &nbsp;
-  [Queue](https://github.com/najm09/CPP/tree/master/Queue) &nbsp;
-  [Tree](https://github.com/najm09/CPP/tree/master/Tree) &nbsp;
-  [Matrix](https://github.com/najm09/CPP/tree/master/Matrix)
+  [Arrays](https://github.com/najm09/CPP/tree/master/DataStructures/Array) &nbsp;
+  [LinkedList](https://github.com/najm09/CPP/tree/master/DataStructures/LinkedList) &nbsp;
+  [Stack](https://github.com/najm09/CPP/tree/master/DataStructures/Stack) &nbsp;
+  [Queue](https://github.com/najm09/CPP/tree/master/DataStructures/Queue) &nbsp;
+  [Tree](https://github.com/najm09/CPP/tree/master/DataStructures/Tree) &nbsp;
+  [Matrix](https://github.com/najm09/CPP/tree/master/DataStructures/Matrix)
 ### 2. [Algorithms](https://github.com/najm09/CPP/tree/master/Algorithms)
   [Sorting](https://github.com/najm09/CPP/tree/master/Algorithms/Sorting) &nbsp;
   [Backtracking](https://github.com/najm09/CPP/tree/master/Algorithms/BackTracking) &nbsp;
@@ -25,6 +25,9 @@
   [StaticMembers](https://github.com/najm09/CPP/tree/master/OOP/StaticMembers) &nbsp;  &nbsp;
   [Exercise](https://github.com/najm09/CPP/tree/master/OOP/Exercise) &nbsp;  &nbsp;
 ### 4. [STL](https://github.com/najm09/CPP/tree/master/STL)
+  [Vector](https://github.com/najm09/CPP/tree/master/STL/Vector/) &nbsp;
+  [map](https://github.com/najm09/CPP/tree/master/STL/map) &nbsp;
+  [unordered_map](https://github.com/najm09/CPP/tree/master/STL/unordered_map) &nbsp;
 ### 5. [Namespaces](https://github.com/najm09/CPP/tree/master/Namespaces)
 ### 6. [Exceptions](https://github.com/najm09/CPP/tree/master/Exceptions)
 ### 7. [PreprocessorDirectives](https://github.com/najm09/CPP/tree/master/PreprocessorDirectives)
