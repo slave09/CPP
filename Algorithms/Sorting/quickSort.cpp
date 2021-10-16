@@ -23,9 +23,9 @@ void quickSort(int A[], int low, int high){
 }
 
 int main(){
-	int arr[10] = {1,2,3,4,45,6,5,4,3,22};
-	quickSort(arr, 0, 9);
-	for(auto num : arr) cout << num << " ";
-	cout << endl;
-	return 0;
+  int arr[10] = {1,2,3,4,45,6,5,4,3,22};
+  quickSort(arr, 0, 9);
+  for(auto num : arr) cout << num << " ";
+  cout << endl;
+  return 0;
 }
