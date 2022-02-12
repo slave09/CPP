@@ -13,6 +13,7 @@
   [Sorting](https://github.com/najm09/CPP/tree/master/Algorithms/Sorting) &nbsp;
   [Backtracking](https://github.com/najm09/CPP/tree/master/Algorithms/BackTracking) &nbsp;
   [Bit Mask](https://github.com/najm09/CPP/tree/master/Algorithms/BitMask) &nbsp;
+  [Greedy](https://github.com/najm09/CPP/tree/master/Algorithms/Greedy) &nbsp;
 ### 3. [Object Oriented Programming](https://github.com/najm09/CPP/tree/master/OOP)
   [Basics](https://github.com/najm09/CPP/tree/master/OOP/Basics) &nbsp;  &nbsp;
   [Inheritance](https://github.com/najm09/CPP/tree/master/OOP/Inheritance) &nbsp;  &nbsp;
