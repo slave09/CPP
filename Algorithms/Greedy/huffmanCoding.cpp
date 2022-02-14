@@ -1,9 +1,12 @@
 /*	
 	* Topic : Huffman Coding, a compression method to reduce data size.  
-	* sort the characters on the basis of their frequency and assign binary code to each distinct character
+	* Algorithm : "https://www.youtube.com/watch?v=L5MloiCxHPk&ab_channel=Insidecode"
+	* sort the characters on the basis of their frequency 
 	* 1. Higher frequency character will have lesser number of bits
-	* 2. Lower frequency character will have more bits
-	* Binary codes are generated using Optimal merge pattern
+	* 2. Lower frequency character will have more number of bits
+	* generate Huffman tree by taking pair of min frequency characters 2 at a time
+	* Perfomr DFS on the tree and generate code for each path by taking left edges as 0s and right Edges as 1s
+	* Tags : Heap, Tree, Map, DFS, BackTracking
 */
 
 #include <bits.stdc++.h>
