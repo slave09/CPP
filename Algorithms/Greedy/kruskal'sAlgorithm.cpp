@@ -38,12 +38,11 @@ int find(vector<int>&disjoint, int node){
 }
 
 void kruskals(vector<vector<int>>&matrix){
-	vector<int>disjoint(matrix.size(), -1); disjoint set to detect cycle
+	vector<int>disjoint(matrix.size(), -1); // disjoint set to detect cycle
 	priority_queue<vector<int>>heap;
-
 	fillHeap(matrix, heap);
-
 	int minCost = 0;
+	
 	while(!heap.empty()){
 		auto node = heap.top();
 		heap.pop();
