@@ -16,6 +16,7 @@
   - [Backtracking](https://github.com/najm09/CPP/tree/master/Algorithms/BackTracking)  
   - [Dynamic Programming](https://github.com/najm09/CPP/tree/master/Algorithms/DP) 
 ### 3. [Object Oriented Programming](https://github.com/najm09/CPP/tree/master/OOP)
+[Notes](https://docs.google.com/document/d/1j8eiPUhDwEVQA76V1ovq4Rjn_GeySGDcBY_QviVUT5k/edit?usp=sharing)
   - [Basics](https://github.com/najm09/CPP/tree/master/OOP/Basics) 
   - [Inheritance](https://github.com/najm09/CPP/tree/master/OOP/Inheritance) 
   - [OperatorOverloading](https://github.com/najm09/CPP/tree/master/OOP/OperatorOverLoading) 
