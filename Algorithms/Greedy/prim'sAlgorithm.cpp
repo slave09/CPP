@@ -24,7 +24,7 @@ void printEdge(vector<int>Edges, vector<int>minCostArr){
 void prims(vector<vector<int>>&adjacencyMatrix){
 	int vertices = adjacencyMatrix.size(); // number of vertices
 	
-	priority_queue<p, vector<p>, greater<p>>heap;
+	priority_queue<p, vector<p>, greater<p>>heap; // sorts according to edges costs
 
 	vector<int>isVertexVisited(vertices, 0); // keeps track of visited vertex 
 	vector<int>minCostArr(vertices, inf); // minimum cost of edge of vertices
