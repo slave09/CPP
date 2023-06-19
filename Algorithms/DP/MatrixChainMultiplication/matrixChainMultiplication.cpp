@@ -22,8 +22,22 @@ int  matrixChain(vector<int>dimensions){
 	return matrix[1][size - 1];
 }
 
+
+int matrixChainRecursive(vector<vector<int>>&dp, vector<int>&nums, int i, int j){
+	if(i >= j) return 0;
+	if(dp[i][j] != -1) return dp[i][j];
+	int minCost = INT_MAX;
+	for(int k = i; k <= j - 1; ++k){
+		minCost = min(matrixChainRecursive(dp, nums, i, k) + matrixChainRecursive(dp, nums, k + 1, j) + nums[i - 1]*nums[k]*nums[j], minCost);
+	}
+	return dp[i][j] = minCost;
+}
+
+
 int main(){
 	vector<int>dimensions = {5,4,6,2,7};
+	vector<vector<int>>dp(dimensions.size() + 1, vector<int>(dimensions.size() + 1, -1));
+	cout << matrixChainRecursive(dp, dimensions, 1, dimensions.size() - 1) << endl;
 	cout << matrixChain(dimensions) << endl;
 	return 0;
 }
